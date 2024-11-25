@@ -1,3 +1,8 @@
+//Jogo da velha (3X3 OU 5X5);Proejeto baseado nas apredizagens das aulas, foi feito por organizações de funções.
+
+
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -212,6 +217,7 @@ void jogadaComputador(char** tabuleiro) {
     }
 }
 
+//ORGANIZANDO MENU,RANK ,CREDITOS E SAIR
 int menu(){
     int menuInt;
 
@@ -224,7 +230,7 @@ int menu(){
     scanf("%d", &menuInt);
     return menuInt;
 }
-
+// função apra anotar e LEVANDO PARA ARQUIVO TXT
 void anotarPlacar(int resultado) {
     FILE *placar = fopen("placar.txt", "r");
     Jogador player[100];
@@ -248,34 +254,34 @@ void anotarPlacar(int resultado) {
     }
 
     // Procura se o jogador já existe
-    int jogadorIndex = -1;
+    int jogadorgeral = -1;
     for (int i = 0; i < numJogadores; i++) {
         if (strcmp(player[i].nome, nome) == 0) {
-            jogadorIndex = i;
+            jogadorgeral = i;
             break;
         }
     }
 
     // Se jogador não existe, adiciona novo jogador
-    if (jogadorIndex == -1) {
-        jogadorIndex = numJogadores;
-        strcpy(player[jogadorIndex].nome, nome);
-        player[jogadorIndex].vitorias = 0;
-        player[jogadorIndex].derrotas = 0;
-        player[jogadorIndex].empates = 0;
+    if (jogadorgeral == -1) {
+        jogadorgeral = numJogadores;
+        strcpy(player[jogadorgeral].nome, nome);
+        player[jogadorgeral].vitorias = 0;
+        player[jogadorgeral].derrotas = 0;
+        player[jogadorgeral].empates = 0;
         numJogadores++;
     }
 
     // Atualiza a pontuação do jogador
     switch (resultado) {
         case 1: // Vitória
-            player[jogadorIndex].vitorias++;
+            player[jogadorgeral].vitorias++;
             break;
         case 2: // Derrota
-            player[jogadorIndex].derrotas++;
+            player[jogadorgeral].derrotas++;
             break;
         case 3: // Empate
-            player[jogadorIndex].empates++;
+            player[jogadorgeral].empates++;
             break;
         default:
             printf("Resultado inválido!\n");
@@ -302,6 +308,7 @@ void anotarPlacar(int resultado) {
     printf("Placar atualizado com sucesso!\n");
 }
 
+//função de exibir o placar
 void exibirPlacar(){
     FILE *placar = fopen("placar.txt", "r");
     Jogador player;
@@ -400,10 +407,10 @@ int main() {
             }
             
             liberarTabuleiro(tabuleiro);
-        }
+        } // creditos
         else if (menuInt == 2)
         {
-            printf("Desenvolvido por: Rony\n");
+            printf("Desenvolvido por: Equipe C turma wallace\n");
         }
         else if (menuInt == 3)
         {

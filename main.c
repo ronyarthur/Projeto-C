@@ -355,12 +355,12 @@ int main() {
                     scanf("%d", &linha);
                     printf("Digite a coluna (0-%d): ", tamanho_tabuleiro - 1);
                     scanf("%d", &coluna);
-                    
+                    //tratamento de erros
                     if (linha < 0 || linha >= tamanho_tabuleiro || coluna < 0 || coluna >= tamanho_tabuleiro) {
                         printf("Posição inválida! Tente novamente.\n");
                         continue;
                     }
-                    
+                    //tratamento de erros
                     if (tabuleiro[linha][coluna] != ' ') {
                         printf("Posição já ocupada! Tente novamente.\n");
                         continue;
@@ -368,7 +368,7 @@ int main() {
                     
                     break;
                 } while (1);
-                
+                //verificando vencedor
                 tabuleiro[linha][coluna] = 'X';
                 jogadas++;
                 
@@ -378,7 +378,7 @@ int main() {
                     printf("Parabéns! Você venceu!\n");
                     break;
                 }
-                
+                //verificando empate
                 if (verificarEmpate(tabuleiro)) {
                     imprimirTabuleiro(tabuleiro);
                     anotarPlacar(3);
@@ -413,7 +413,7 @@ int main() {
             printf("Desenvolvido por: Equipe C turma wallace\n");
         }
         else if (menuInt == 3)
-        {
+        { //exibindo placar
             printf("Placar: \n");
             exibirPlacar();
         }
